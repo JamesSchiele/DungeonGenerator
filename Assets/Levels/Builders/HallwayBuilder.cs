@@ -80,6 +80,7 @@ namespace Assets.Level.Builders
             _structureBuilder.BuildCeiling(location.x, location.y + 1, location.z);
 
             var wallDirections = new List<Direction>();
+            var (previousDirection, nextDirection) = GetNeighbourDirections(location, previous?.Location, next);
 
             foreach (var direction in new[] { Direction.North, Direction.East, Direction.South, Direction.West })
             {
@@ -92,6 +93,8 @@ namespace Assets.Level.Builders
                 wallDirections.Add(direction);
             }
 
+            foreach (var wallDirection in wallDirections)
+            {
             Debug.Log($"Piece with neighbours {previousDirection}, {nextDirection}. Placing walls: ");
 
             foreach (var wallDirection in wallDirections)
@@ -103,6 +106,7 @@ namespace Assets.Level.Builders
 
         private (Direction?, Direction?) GetNeighbourDirections(Vector3Int location, Vector3Int? previous, Vector3Int? next)
         {
+            // previousDelta is the delta FROM current TO previous
             // previousDelta - the delta FROM curent TO previous
             var previousDelta = previous != null ? previous.Value - location : (Vector3Int?)null;
             var nextDelta = next != null ? next.Value - location : (Vector3Int?)null;
@@ -110,6 +114,8 @@ namespace Assets.Level.Builders
             var previousDirection = GetDirectionForDelta(previousDelta);
             var nextDirection = GetDirectionForDelta(nextDelta);
             return (previousDirection, nextDirection);
+
+            static Direction? GetDirectionForDelta(Vector3Int? delta)
             
 
             Direction? GetDirectionForDelta(Vector3Int? delta)
@@ -118,6 +124,8 @@ namespace Assets.Level.Builders
                 {
                     return null;
                 }
+                else if (delta.Value.x < 0)
+                {
                 //else if (delta.Value.y != 0)
                 //{
                 //    // This means neighbour is above or below (not necessarily a staircase)

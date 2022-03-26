@@ -1,4 +1,5 @@
 using Assets.World.Models;
+using System;
 using UnityEngine;
 
 namespace Assets.Level.Models
@@ -24,6 +25,23 @@ namespace Assets.Level.Models
             VerticalOffset = verticalOffset;
             HorizontalOffset = horizontalOffset;
 
+            IsUp = VerticalOffset.y > 0;
+            Direction = HorizontalOffset.x == 0 ? HorizontalOffset.z > 0 ? Direction.North : Direction.South
+                                                    : HorizontalOffset.x > 0 ? Direction.East : Direction.West;
+
+            if (verticalOffset.y == 0)
+            {
+                Debug.Log("Cannot create a staircase with no elevation change");
+                throw new ArgumentException("Cannot create a staircase with no elevation change");
+            }
+
+            if (horizontalOffset.x != 0 && horizontalOffset.z != 0)
+            {
+                Debug.Log($"Staircase has nonzero x and z offsets: {horizontalOffset.x}, {horizontalOffset.z}");
+                throw new ArgumentException("Can't create a staircase with ambiguous direction");
+            }
+
+            AddPieces(previous, verticalOffset, horizontalOffset);
             IsUp = isUp;
             Direction = direction;
         }

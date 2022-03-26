@@ -4,6 +4,9 @@ namespace Assets.Level.Builders
 {
     public class LevelBuilder : MonoBehaviour
     {
+        private RoomBuilder _roomBuilder;
+        private HallwayBuilder _hallwayBuilder;
+        private StaircaseBuilder _staircaseBuilder;
         [SerializeField]
         Material greenMaterial;
         string stairsTag = "Stairs";

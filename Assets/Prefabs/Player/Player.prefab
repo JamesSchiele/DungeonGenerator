@@ -43,6 +43,9 @@ GameObject:
   - component: {fileID: 1336994966334551115}
   - component: {fileID: 1336994966324827275}
   - component: {fileID: 1336994966322586319}
+  m_Layer: 0
+  m_Name: Player
+  m_TagString: Untagged
   - component: {fileID: 1859198456}
   m_Layer: 0
   m_Name: Player
@@ -832,6 +835,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1c918b13907aa334587d644b95f62eb2, type: 3}
+--- !u!4 &9037033106803544668 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 479315117325413788, guid: 1c918b13907aa334587d644b95f62eb2,
+    type: 3}
+  m_PrefabInstance: {fileID: 8921388100570038208}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6446018798822450307 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2502867540017077059, guid: 1c918b13907aa334587d644b95f62eb2,
 --- !u!4 &6446018798822450307 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2502867540017077059, guid: 1c918b13907aa334587d644b95f62eb2,
