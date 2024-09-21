@@ -109,7 +109,8 @@ public class EnemyAI : MonoBehaviour
             EnemyAnimator.enabled = false;
             Debug.Log("animator turned off");
             foreach ( Rigidbody rb in GetComponentsInChildren<Rigidbody>() ) rb.isKinematic = false;
-            Destroy(this);
+            yield return new WaitForSeconds(1f);
+            Destroy(gameObject);
             yield return null;
         }
     }
